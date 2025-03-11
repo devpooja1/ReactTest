@@ -1,0 +1,20 @@
+{
+  "product": [
+    {
+      "id": "96f5",
+      "pno": "102",
+      "pname": "Eye Liner",
+      "qnty": "2",
+      "price": "600",
+      "cname": "Nazneen"
+    },
+    {
+      "id": "79be",
+      "pno": "103",
+      "pname": "Eye Liner",
+      "qnty": "3",
+      "price": "900",
+      "cname": "Muskan"
+    }
+  ]
+}

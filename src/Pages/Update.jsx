@@ -1,0 +1,72 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import  Table  from "react-bootstrap/Table";
+import  Button  from "react-bootstrap/Button";
+
+
+const Update=()=>{
+    const [data, setData] = useState([]);
+
+    const loadData=async()=>{
+        let api= "http://localhost:3000/product/?";
+        const display = await axios.get(api);
+        setData(display.data)
+        console.log(display.data);
+
+    }
+
+    useEffect(()=>{
+        loadData()
+    },[]);
+
+    const mydel=async(id)=>{
+        let api= `http://localhost:3000/product/${id}`;
+        const response = await axios.delete(api);
+
+        alert("data deleted!!1");
+        loadData();
+    }
+
+    const ans = data.map((key)=>{
+        return(
+            <>
+             <tr>
+            <td>{key.pno}</td>
+            <td>{key.pname}</td>
+            <td>{key.qnty}</td>
+            <td>{key.price}</td>
+            <td>{key.cname}</td>
+            <td>
+                <Button style={{backgroundColor:"primary", borderRadius:"5px", border:"none", color:"white"}} onClick={()=>{mydel(key.id)}}>Delete</Button>
+            </td>
+        </tr>
+            
+            </>
+        )
+       
+    })
+
+    return(
+        <>
+        <div style={{width:"800px", margin:"auto"}} >      
+              <h1 align="center">Display Data</h1>
+              <hr />
+        <Table striped>
+            <tr>
+                <th>Product Number</th>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Product Price</th>
+                <th>C Name</th>
+                <th>Update</th>
+            </tr>
+            <tbody>
+               {ans} 
+            </tbody>
+        </Table>
+        </div>
+
+        </>
+    )
+}
+export default Update;
