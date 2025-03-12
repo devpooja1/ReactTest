@@ -2,6 +2,12 @@
   "name": "test",
   "private": true,
   "version": "0.0.0",
+  "routes": [
+    {
+      "src": "/api/product",
+      "dest": "/data/product.json"
+    }
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
